@@ -76,3 +76,30 @@ const socTeam = [
   { name: "James", specialSkill: "Mannequin friendship" },
   { name: "Banwo", specialSkill: "Having accidents" },
 ];
+
+// Below is a lazier, dynamic alternative to typing the above array out
+// manually (as was done above).
+
+const someText = `
+  3. SoC Team (hint: combine with your morning knowledge)
+  Name is Ben, special skill is code rapping.
+  Name is Tao, special skill is hand raising.
+  Name is Lizzie, special skill is being friendly.
+  Name is Liz.K, special skill is crotchet.
+  Name is Mell, special skill is winning quizzes.
+  Name is Chris, special skill is changing lives.
+  Name is Tim, special skill is kitchen based analogies.
+  Name is James, special skill is mannequin friendship.
+  Name is Banwo, special skill is having accidents.
+`;
+
+const alsoSocTeam = [
+  ...someText.matchAll(
+    /Name is (?<name>.+?), special skill is (?<specialSkill>.+?)\./g
+  ),
+].map((o) => {
+  const {
+    groups: { name, specialSkill },
+  } = o;
+  return { name, specialSkill };
+});
