@@ -97,9 +97,4 @@ const alsoSocTeam = [
   ...someText.matchAll(
     /Name is (?<name>.+?), special skill is (?<specialSkill>.+?)\./g
   ),
-].map((o) => {
-  const {
-    groups: { name, specialSkill },
-  } = o;
-  return { name, specialSkill };
-});
+].map((arr) => arr.groups);
